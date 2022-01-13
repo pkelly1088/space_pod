@@ -1,0 +1,149 @@
+@import "./../Abstracts/variables";
+@import "./../Abstracts/functions";
+@import "./../Abstracts/mixins";
+
+header {
+  max-width: 100%;
+  width: 100%;
+  background-color: color("gray-dark");
+  @include flexbox();
+  position: fixed;
+  z-index: 1000;
+
+  @include tablet {
+    @include justify-content(center);
+  }
+}
+
+nav {
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: color("gray-dark");
+  color: color("white");
+  @include flexbox();
+  @include flex-direction(column);
+  @include justify-content(center);
+  overflow: hidden;
+
+  @include tablet {
+    width: 1920px;
+    @include flexbox();
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(flex-start);
+  }
+
+  .logo {
+    @include flexbox();
+    @include align-items(center);
+    img {
+      @include flexbox();
+      @include align-self(center);
+      height: 60px;
+    }
+  }
+
+  .nav-sections {
+    display: none;
+
+    @include tablet {
+      @include flexbox();
+      @include flex-direction(row);
+      @include justify-content(space-between);
+      @include align-items(center);
+      width: 100%;
+    }
+
+    ul {
+      padding-left: 0;
+    }
+
+    .nav-links {
+      list-style-type: none;
+      @include flexbox();
+      @include flex-direction(column);
+      @include align-items(center);
+
+      @include tablet {
+        @include flex-direction(row);
+        padding-left: 4rem;
+      }
+
+      li {
+        margin: 0 1.5rem;
+        padding: 1rem 0;
+
+        .nav-link {
+          padding: 1rem 0;
+          position: relative;
+          color: color("white");
+          font-weight: 400;
+          text-decoration: none;
+
+          &::before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0.75rem;
+            left: 0;
+            visibility: hidden;
+            @include transition(all 0.3s ease-in-out);
+            background-color: color("primary-alt");
+          }
+
+          &:hover::before,
+          &:focus::before {
+            visibility: visible;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    right: 2rem;
+    top: 2.8rem;
+
+    @include tablet {
+      display: hidden;
+    }
+  }
+
+  .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    @include transition(all 0.3s ease-in-out);
+    background-color: color("primary-alt");
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  .hamburger.responsive .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.responsive .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.responsive .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .nav-sections.responsive {
+    @include flexbox();
+    @include flex-direction(column);
+    @include align-items(center);
+    width: 100%;
+    @include transition(0.3s);
+  }
+}

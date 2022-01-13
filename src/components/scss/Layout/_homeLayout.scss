@@ -1,0 +1,43 @@
+@import "./../Abstracts/variables";
+@import "./../Abstracts/functions";
+@import "./../Abstracts/mixins";
+
+main {
+  z-index: 800;
+  margin-top: 0;
+  position: relative;
+  width: 100%;
+  //   background-color: color("primary-alt-lightest");
+  color: color("gray-dark");
+}
+
+// section {
+//   color: color("gray-dark");
+// }
+
+.main-container {
+  max-width: 100%;
+  z-index: 900;
+  margin: 0 auto;
+  padding: 2rem;
+  padding-top: 101px;
+  //   background-color: color("white");
+
+  @include tablet {
+    max-width: 1200px;
+    padding-top: 117px;
+  }
+
+  .row {
+    max-width: 100%;
+    @include flexbox();
+    @include flex-wrap(wrap);
+    @include flex-direction(column);
+    @include justify-content(center);
+    column-gap: 1rem;
+
+    @include tablet {
+      @include flex-direction(row);
+    }
+  }
+}

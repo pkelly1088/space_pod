@@ -1,0 +1,28 @@
+$columns: 12;
+
+$padding: 2rem;
+
+$margin: 1rem;
+
+$desktop: 1200px;
+$tablet: 900px;
+$phone: 600px;
+
+$colors: (
+  "primary": #105bd8,
+  "primary-darker": #0b3d91,
+  "primary-darkest": #061f4a,
+  "primary-alt": #02bfe7,
+  "primary-alt-darkest": #046b99,
+  "primary-alt-dark": #00a6d2,
+  "primary-alt-light": #9bdaf1,
+  "primary-alt-lightest": #e1f3f8,
+  "secondary": #dd361c,
+  "secondary-darkest": #99231b,
+  "secondary-dark": #c62e1f,
+  "secondary-light": #e59892,
+  "secondary-lightest": #f9e0de,
+  "white": #fff,
+  "gray": #aeb0b5,
+  "gray-dark": #323a45,
+);

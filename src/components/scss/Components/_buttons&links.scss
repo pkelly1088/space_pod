@@ -1,0 +1,51 @@
+@import "./../Abstracts/variables";
+@import "./../Abstracts/functions";
+
+/* Links
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+a {
+  color: color("primary");
+  text-decoration: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    color: lighten(color("primary"), 20%);
+    text-decoration: underline;
+  }
+}
+
+/* Buttons
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  display: inline-block;
+  height: 38px;
+  padding: 0 30px;
+  color: color("accent");
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: 0px;
+  border: 1px solid color("accent");
+  cursor: pointer;
+  box-sizing: border-box;
+
+  &:hover,
+  :focus {
+    color: color("white");
+    border-color: color("accent");
+    background-color: color("accent");
+    outline: 0;
+    @include transition(all 0.3s ease-in-out);
+  }
+}
