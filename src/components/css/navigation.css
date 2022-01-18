@@ -341,6 +341,7 @@ template {
 body {
   background-color: #e1f3f8;
   color: #323a45;
+  overflow-y: auto;
 }
 
 main {
@@ -351,6 +352,11 @@ main {
   main {
     margin-top: 127px;
   }
+}
+
+.section-title {
+  font-weight: 600;
+  color: #99231b;
 }
 
 /* Base Styles
@@ -446,6 +452,7 @@ input[type="button"] {
   display: inline-block;
   height: 38px;
   padding: 0 30px;
+  color: #fff;
   text-align: center;
   font-size: 11px;
   font-weight: 600;
@@ -456,9 +463,11 @@ input[type="button"] {
   white-space: nowrap;
   background-color: transparent;
   border-radius: 0px;
-  border: 1px solid;
+  border: 1px solid #00a6d2;
+  background-color: #00a6d2;
   cursor: pointer;
   box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
 }
 
 .button:hover,
@@ -472,6 +481,24 @@ input[type="reset"] :focus,
 input[type="button"]:hover,
 input[type="button"] :focus {
   color: #fff;
+  background-color: #046b99;
+  border-color: #046b99;
+  outline: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.unlike-btn {
+  border: 1px solid #c62e1f;
+  background-color: #c62e1f;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.unlike-btn:hover,
+.unlike-btn :focus {
+  color: #fff;
+  background-color: #99231b;
+  border-color: #99231b;
   outline: 0;
   transition: all 0.3s ease-in-out;
 }

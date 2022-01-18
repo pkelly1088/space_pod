@@ -11,9 +11,9 @@ main {
   color: color("gray-dark");
 }
 
-// section {
-//   color: color("gray-dark");
-// }
+.card-section {
+  @include flexbox();
+}
 
 .main-container {
   max-width: 100%;
@@ -28,6 +28,18 @@ main {
     padding-top: 117px;
   }
 
+  .card-section {
+    max-width: 100%;
+    @include flexbox();
+    @include flex-wrap(wrap);
+    @include flex-direction(column);
+    @include justify-content(space-between);
+
+    @include tablet {
+      @include flex-direction(row);
+    }
+  }
+
   .row {
     max-width: 100%;
     @include flexbox();
@@ -38,6 +50,15 @@ main {
 
     @include tablet {
       @include flex-direction(row);
+    }
+  }
+
+  .daily-intro {
+    @include flex(100%);
+    padding-top: 1rem;
+
+    @include tablet {
+      @include flex(49%);
     }
   }
 }

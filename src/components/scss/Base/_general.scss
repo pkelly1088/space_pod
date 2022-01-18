@@ -5,6 +5,7 @@
 body {
   background-color: color("primary-alt-lightest");
   color: color("gray-dark");
+  overflow-y: auto;
 }
 
 main {
@@ -13,4 +14,9 @@ main {
   @include desktop {
     margin-top: 127px;
   }
+}
+
+.section-title {
+  font-weight: 600;
+  color: color("secondary-darkest");
 }

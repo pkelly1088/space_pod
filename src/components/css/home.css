@@ -6,6 +6,10 @@ main {
   color: #323a45;
 }
 
+.card-section {
+  display: flex;
+}
+
 .main-container {
   max-width: 100%;
   z-index: 900;
@@ -21,6 +25,20 @@ main {
   }
 }
 
+.main-container .card-section {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (min-width: 900px) {
+  .main-container .card-section {
+    flex-direction: row;
+  }
+}
+
 .main-container .row {
   max-width: 100%;
   display: flex;
@@ -33,5 +51,16 @@ main {
 @media (min-width: 900px) {
   .main-container .row {
     flex-direction: row;
+  }
+}
+
+.main-container .daily-intro {
+  flex: 100%;
+  padding-top: 1rem;
+}
+
+@media (min-width: 900px) {
+  .main-container .daily-intro {
+    flex: 49%;
   }
 }

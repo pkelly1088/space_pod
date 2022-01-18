@@ -17,7 +17,7 @@ const Navigation = () => {
             <div className={responsive ? 'nav-sections responsive' : 'nav-sections'}>
                 <ul className="nav-links">
                     <li><Link className="nav-link" to="/" onClick={closeMobileMenu}>Home</Link></li>
-                    <li><Link className="nav-link" to="/LikedPhoto" onClick={closeMobileMenu}>Liked Photos</Link></li>
+                    <li><Link className="nav-link" to="/LikedPhoto" onClick={closeMobileMenu}>My Liked Photos</Link></li>
                 </ul>
             </div>
             <div className={responsive ? 'hamburger responsive' : 'hamburger'} onClick={handleClick}>

@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './css/home.css';
 import DailyPhoto from "./DailyPhoto.js";
 import PhotoForm from "./PhotoForm";
+import PhotoCard from "./PhotoCard";
 
 const apiKey = process.env.REACT_APP_SPACE_POD_KEY;
 
 const Home = () => {
+    // <---SECTION FOR ALL GLOBAL ITEMS --->
+    const [photoArray, setPhotoArray] = useState([]);
 
     //<---SECTION FOR DAILY PHOTO COMPONENT: states and data to be passed to DailyPhoto component, handling initial fetch of todays photo---->
     const [photoData, setPhotoData] = useState(null);
@@ -24,7 +27,6 @@ const Home = () => {
     //states and functions for handling date inputs
     const [fromDate, setFromDate] = useState({ selectedDay: undefined });
     const [toDate, setToDate] = useState({ selectedDay: undefined });
-    const [photoArray, setPhotoArray] = useState([]);
     const [errorMessage, setErrorMessage] = useState();
 
     const handleFromDate = (day) => {
@@ -131,12 +133,39 @@ const Home = () => {
 
     //<---SECTION FOR PHOTOCARD COMPONENT: states and functions for photo cards --->
 
+    const handleLike = (index) => {
+        let myPhoto = photoArray[index];
+        myPhoto.liked = true;
+        let photosCopy = [...photoArray];
+        photosCopy.splice(index, 1, myPhoto);
+        setPhotoArray(photosCopy);
+        let likedArray = [];
+        if(localStorage.hasOwnProperty('likedPhotos') === false) {
+            likedArray.push(myPhoto);
+            localStorage.setItem('likedPhotos', JSON.stringify(likedArray))
+        } else if(localStorage.hasOwnProperty('likedPhotos') === true) {
+            let localPhotoStorage = JSON.parse(localStorage.getItem('likedPhotos'));
+            localPhotoStorage.push(myPhoto);
+            localStorage.setItem('likedPhotos', JSON.stringify(localPhotoStorage));
+        }
+    }
+
+    const handleUnlike = (index) => {
+        let myPhoto = photoArray[index];
+        myPhoto.liked = false;
+        let photosCopy = [...photoArray];
+        photosCopy.splice(index, 1, myPhoto);
+        setPhotoArray(photosCopy);
+        let localPhotoStorage = JSON.parse(localStorage.getItem('likedPhotos'));
+        let unlikedPhotoStorage = localPhotoStorage.filter(storedPhoto => storedPhoto.photoData.date !== myPhoto.photoData.date)
+        localStorage.setItem('likedPhotos', JSON.stringify(unlikedPhotoStorage));
+    }
+
+
     return (
         <main>
             <div className="main-container">
                 <section>
-                    <h1 className="row">Space P.O.D.</h1>
-                    <p className="row">Get a glimpse into NASA's photo of the day!</p>
                     <DailyPhoto photoData={photoData} />
                 </section>
                 <section>
@@ -144,16 +173,22 @@ const Home = () => {
                         handleFromDate={handleFromDate}
                         handleToDate={handleToDate}
                         handleSubmit={handleSubmit}
-
                     />
                 </section>
-                <section>
+                <section className="card-section">
                     {
                     photoArray.map((item, index) => {
-                        console.log('photoArray in JSX: ',photoArray)
-                        let itemData = item.photoData
+                        let itemData = item.photoData;
+                        let itemLiked = item.liked
                         return(
-                            <img key={index} src={itemData.url} alt={itemData.title}></img>
+                            <PhotoCard
+                            itemData={itemData}
+                            index={index}
+                            itemLiked={itemLiked}
+                            handleLike={handleLike}
+                            handleUnlike={handleUnlike}
+                            >
+                            </PhotoCard>
                         )
                     })
                     }
