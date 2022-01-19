@@ -5,7 +5,8 @@ import PhotoForm from "./PhotoForm";
 import PhotoCard from "./PhotoCard";
 import Loader from "./Loader";
 
-const apiKey = process.env.REACT_APP_SPACE_POD_KEY;
+// const apiKey = process.env.REACT_APP_SPACE_POD_KEY;
+const apiKey = '';
 
 const Home = () => {
     // <---SECTION FOR ALL GLOBAL ITEMS --->
