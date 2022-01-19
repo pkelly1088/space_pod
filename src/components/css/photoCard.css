@@ -1,18 +1,4 @@
 @charset "UTF-8";
-/* Links
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-a {
-  color: #105bd8;
-  text-decoration: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-a:hover {
-  color: #5b94f3;
-  text-decoration: underline;
-}
-
 /* Buttons
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .button,

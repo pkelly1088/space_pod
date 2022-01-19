@@ -10,6 +10,10 @@ main {
   color: color("gray-dark");
 }
 
+.title {
+  font-weight: 600;
+}
+
 .main-container {
   max-width: 100%;
   z-index: 900;
@@ -44,15 +48,6 @@ main {
 
     @include tablet {
       @include flex-direction(row);
-    }
-  }
-
-  .daily-intro {
-    @include flex(100%);
-    padding-top: 1rem;
-
-    @include tablet {
-      @include flex(49%);
     }
   }
 }

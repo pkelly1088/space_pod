@@ -141,11 +141,3 @@
   -o-transition: $args;
   transition: $args;
 }
-
-@mixin display-grid {
-  display: -ms-grid;
-
-  @supports (display: grid) {
-    display: grid;
-  }
-}

@@ -3,12 +3,14 @@ import './css/home.css';
 import DailyPhoto from "./DailyPhoto.js";
 import PhotoForm from "./PhotoForm";
 import PhotoCard from "./PhotoCard";
+import Loader from "./Loader";
 
 const apiKey = process.env.REACT_APP_SPACE_POD_KEY;
 
 const Home = () => {
     // <---SECTION FOR ALL GLOBAL ITEMS --->
     const [photoArray, setPhotoArray] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     //<---SECTION FOR DAILY PHOTO COMPONENT: states and data to be passed to DailyPhoto component, handling initial fetch of todays photo---->
     const [photoData, setPhotoData] = useState(null);
@@ -27,7 +29,7 @@ const Home = () => {
     //states and functions for handling date inputs
     const [fromDate, setFromDate] = useState({ selectedDay: undefined });
     const [toDate, setToDate] = useState({ selectedDay: undefined });
-    const [errorMessage, setErrorMessage] = useState();
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleFromDate = (day) => {
         setFromDate({ selectedDay: day });    
@@ -87,6 +89,8 @@ const Home = () => {
 
         //function for getting data from api
         async function fetchImages (queryParams) {
+            //set loading to display loader while images are being retrieved from fetch
+            setLoading(true);
             //setting url with params passed by user and key passed from .env file
             let url = `https://api.nasa.gov/planetary/apod?${queryParams}&api_key=${apiKey}`;
 
@@ -104,6 +108,8 @@ const Home = () => {
             }
             //sending temp array to save photo function after all objects in array from api are saved in the temp array
             savePhotoData(tempPhotoArray);
+            //set loading to false to remove loader from screen after images load
+            setLoading(false);
         }
 
         //this function sets the photoArray state so it can be displayed on the screen and clears teh temp photo object and temp photo array for reuse
@@ -118,13 +124,13 @@ const Home = () => {
         
         //conditional code that checks the user input and verified before sending request to api or giving user a warming
         if(fromDate.selectedDay === undefined || toDate.selectedDay === undefined){
-            setErrorMessage('Please select a from date for your search')
+            setErrorMessage('Please select both a From and To date for your search')
         }else if(fromDate.selectedDay > toDate.selectedDay) {
             setErrorMessage('From date must come before To date')
         }else if(fromDate.selectedDay > new Date() || toDate.selectedDay > new Date()){
             setErrorMessage('Selected days must be before todays date')
         }else{
-            setErrorMessage();
+            setErrorMessage('');
             defineFromQuery();
             defineToQuery();
             fetchImages(`start_date=${queryFromDate}&end_date=${queryToDate}`);
@@ -133,6 +139,7 @@ const Home = () => {
 
     //<---SECTION FOR PHOTOCARD COMPONENT: states and functions for photo cards --->
 
+    //function to handle like, changes item liked state to true and saves it to photoArray state and local storage for My Liked Photos page
     const handleLike = (index) => {
         let myPhoto = photoArray[index];
         myPhoto.liked = true;
@@ -150,6 +157,7 @@ const Home = () => {
         }
     }
 
+    //function for handling unlike, changes item liked state to false and saves it to photoArray and fitlers it from local storage
     const handleUnlike = (index) => {
         let myPhoto = photoArray[index];
         myPhoto.liked = false;
@@ -173,9 +181,13 @@ const Home = () => {
                         handleFromDate={handleFromDate}
                         handleToDate={handleToDate}
                         handleSubmit={handleSubmit}
+                        errorMessage={errorMessage}
                     />
                 </section>
                 <section className="card-section">
+                    {loading
+                    ? <Loader />
+                    : <div></div>}
                     {
                     photoArray.map((item, index) => {
                         let itemData = item.photoData;

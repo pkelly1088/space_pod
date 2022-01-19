@@ -6,6 +6,10 @@ main {
   color: #323a45;
 }
 
+.title {
+  font-weight: 600;
+}
+
 .main-container {
   max-width: 100%;
   z-index: 900;
@@ -47,16 +51,5 @@ main {
 @media (min-width: 900px) {
   .main-container .row {
     flex-direction: row;
-  }
-}
-
-.main-container .daily-intro {
-  flex: 100%;
-  padding-top: 1rem;
-}
-
-@media (min-width: 900px) {
-  .main-container .daily-intro {
-    flex: 49%;
   }
 }

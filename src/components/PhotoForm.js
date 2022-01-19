@@ -8,7 +8,7 @@ import MomentLocalUtils, {
     parseDate,
 } from 'react-day-picker/moment';
 
-const PhotoForm = ({ handleFromDate, handleToDate, handleSubmit }) => {
+const PhotoForm = ({ handleFromDate, handleToDate, handleSubmit, errorMessage }) => {
 
     return (
         <form className="row search-box">
@@ -19,25 +19,28 @@ const PhotoForm = ({ handleFromDate, handleToDate, handleSubmit }) => {
                 <p>Hit the Like button for photos you like and they will be saved on the My Liked Photos page.</p>
             </div>
             <div className="column-half search-input">
-                <div className="">
-                    <p className="input-title">From</p>
-                    <DayPickerInput
+                <div >
+                    <lable for="from day picker input" className="input-title">From</lable>
+                    <DayPickerInput id="from day picker input"
                     formatDate={formatDate}
                     parseDate={parseDate}
                     placeholder={`${formatDate(new Date())}`}
                     onDayChange={handleFromDate}
                     />
                 </div>
-                <div className="">
-                    <p className="input-title">To</p>
-                    <DayPickerInput
+                <div>
+                    <lable for='to day picker input' className="input-title">To</lable>
+                    <DayPickerInput id="to day picker input"
                     formatDate={formatDate}
                     parseDate={parseDate}
                     placeholder={`${formatDate(new Date())}`}
                     onDayChange={handleToDate}
                     />
                 </div>
-                <div className="row submit-btn">
+                <div className="error-container">
+                    <p className="error-message">{errorMessage}</p>
+                </div>
+                <div className="submit-btn">
                     <button onClick={handleSubmit}>Submit</button>
                 </div>
             </div>

@@ -1,20 +1,6 @@
 @import "./../Abstracts/variables";
 @import "./../Abstracts/functions";
 
-/* Links
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-a {
-  color: color("primary");
-  text-decoration: none;
-  background-color: transparent;
-  cursor: pointer;
-
-  &:hover {
-    color: lighten(color("primary"), 20%);
-    text-decoration: underline;
-  }
-}
-
 /* Buttons
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .button,

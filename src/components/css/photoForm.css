@@ -1,18 +1,4 @@
 @charset "UTF-8";
-/* Links
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-a {
-  color: #105bd8;
-  text-decoration: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-a:hover {
-  color: #5b94f3;
-  text-decoration: underline;
-}
-
 /* Buttons
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .button,
@@ -89,6 +75,12 @@ input[type="button"] :focus {
   }
 }
 
+.error-message {
+  margin-top: 2rem;
+  color: #c62e1f;
+  font-weight: 600;
+}
+
 .search-box {
   padding: 2rem;
   margin-top: 5rem;
@@ -103,6 +95,8 @@ input[type="button"] :focus {
 .input-title {
   margin-bottom: 0.5rem;
   margin-top: 3.5rem;
+  display: block;
+  width: 100%;
 }
 
 .submit-btn {

@@ -16,6 +16,12 @@
   }
 }
 
+.error-message {
+  margin-top: 2rem;
+  color: color("secondary-dark");
+  font-weight: 600;
+}
+
 .search-box {
   padding: 2rem;
   margin-top: 5rem;
@@ -30,6 +36,8 @@
 .input-title {
   margin-bottom: 0.5rem;
   margin-top: 3.5rem;
+  display: block;
+  width: 100%;
 }
 
 .submit-btn {
