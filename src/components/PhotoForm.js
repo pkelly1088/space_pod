@@ -14,7 +14,7 @@ const PhotoForm = ({ handleFromDate, handleToDate, handleSubmit, errorMessage })
         <form className="row search-box">
             <div className="column-half search-info">
                 <h2 className="section-title">NASA Daily Photo Search</h2>
-                <p>Use the from and to date selectors to choose a desired range of NASA's photos of the day.</p>
+                <p>Use the from and to date selectors to choose a desired range of NASA's Astronomy Picture of the Day.</p>
                 <p>Images with info with be displayed below.</p>
                 <p>Hit the Like button for photos you like and they will be saved on the My Liked Photos page.</p>
             </div>
@@ -26,6 +26,7 @@ const PhotoForm = ({ handleFromDate, handleToDate, handleSubmit, errorMessage })
                     parseDate={parseDate}
                     placeholder={`${formatDate(new Date())}`}
                     onDayChange={handleFromDate}
+                    className="date-picker"
                     />
                 </div>
                 <div>
