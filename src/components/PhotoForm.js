@@ -20,7 +20,7 @@ const PhotoForm = ({ handleFromDate, handleToDate, handleSubmit, errorMessage })
             </div>
             <div className="column-half search-input">
                 <div >
-                    <lable for="from day picker input" className="input-title">From</lable>
+                    <label htmlFor="from day picker input" className="input-title">From</label>
                     <DayPickerInput id="from day picker input"
                     formatDate={formatDate}
                     parseDate={parseDate}
@@ -29,7 +29,7 @@ const PhotoForm = ({ handleFromDate, handleToDate, handleSubmit, errorMessage })
                     />
                 </div>
                 <div>
-                    <lable for='to day picker input' className="input-title">To</lable>
+                    <label htmlFor='to day picker input' className="input-title">To</label>
                     <DayPickerInput id="to day picker input"
                     formatDate={formatDate}
                     parseDate={parseDate}
