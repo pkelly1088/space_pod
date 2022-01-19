@@ -27,7 +27,7 @@ main {
     @include flexbox();
     @include flex-wrap(wrap);
     @include flex-direction(column);
-    @include justify-content(space-between);
+    @include justify-content(center);
 
     @include tablet {
       @include flex-direction(row);

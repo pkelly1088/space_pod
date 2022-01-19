@@ -123,12 +123,14 @@ const Home = () => {
             }
         
         //conditional code that checks the user input and verified before sending request to api or giving user a warming
+        const tomorrowDate = new Date();
+        tomorrowDate.setDate(tomorrowDate.getDate() + 1);
         if(fromDate.selectedDay === undefined || toDate.selectedDay === undefined){
-            setErrorMessage('Please select both a From and To date for your search')
+            setErrorMessage('Please select both a From and To date for your search.')
         }else if(fromDate.selectedDay > toDate.selectedDay) {
-            setErrorMessage('From date must come before To date')
-        }else if(fromDate.selectedDay > new Date() || toDate.selectedDay > new Date()){
-            setErrorMessage('Selected days must be before todays date')
+            setErrorMessage('From date must come before To date.')
+        }else if(fromDate.selectedDay > tomorrowDate || toDate.tomorrowDate > new Date()){
+            setErrorMessage(`Selected days must be before ${(tomorrowDate.getMonth()+1)}/${tomorrowDate.getDate()}/${tomorrowDate.getFullYear()}.`)
         }else{
             setErrorMessage('');
             defineFromQuery();

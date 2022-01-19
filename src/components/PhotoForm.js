@@ -3,7 +3,7 @@ import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 import './css/photoForm.css';
 
-import MomentLocalUtils, {
+import {
     formatDate,
     parseDate,
 } from 'react-day-picker/moment';
